@@ -1,0 +1,12 @@
+body {
+      box-sizing: border-box; 
+    }
+    div:hover img {
+      opacity: 0;
+    }
+    img {
+      position: absolute;
+    }
+    iframe:hover {
+      position: absolute;
+    }
