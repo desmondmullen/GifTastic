@@ -5,7 +5,10 @@ em {
     font-style: italic;
 }
 header {
-margin: 20px;
+margin: 10px 0;
+padding: 10px 20px;
+font-weight: bold;
+background-color: lightblue;
 }
 #ratings {
     float: left;
@@ -30,7 +33,9 @@ div {
     align-content: center;
 }
 #last-search {
-    margin: 10px;
+    margin: 10px 0;
+    font-family: 'Courier New', Courier, monospace;
+    background-color:lightgreen;
 }
 .gif-holder {
     display: inline-block;
