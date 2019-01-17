@@ -1,12 +1,15 @@
 body {
-      box-sizing: border-box; 
-    }
-    div:hover img {
-      opacity: 0;
-    }
-    img {
-      position: absolute;
-    }
-    iframe:hover {
-      position: absolute;
-    }
+    box-sizing: border-box; 
+}
+.gif-holder {
+    width: 200px;
+}
+div:hover img {
+    opacity: 0;
+}
+img {
+    position: absolute;
+}
+iframe:hover {
+    position: absolute;
+}
