@@ -1,19 +1,61 @@
 body {
     box-sizing: border-box; 
 }
-.gif-holder {
-    display: inline-block;
-    width: 200px;
+em {
+    font-style: italic;
+}
+header {
+margin: 20px;
+}
+#ratings {
+    float: left;
+}
+#add-button-area {
+    float: right;
+}
+.btn {
     margin: 10px;
 }
+.radio-button {
+    margin: 0 0 0 20px;
+    background-color: gray;
+}
+header::after {
+    content: "";
+    clear: both;
+    display: table;
+}
 div {
-    /* border: 2px solid red; */
+    text-align: center;
+    align-content: center;
+}
+#last-search {
+    margin: 10px;
+}
+.gif-holder {
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+    background-color: lightgray;
+    max-width: 200px;
+}
+.gif-info {
+    font-style: italic;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.gif-rating {
+    font-weight: bold; 
+    margin: 0 auto;
 }
 iframe:hover {
     opacity: 1;
 }
 img {
     position: absolute;
+    max-height: 150px;
 }
 iframe {
     left: 0px;
@@ -21,5 +63,7 @@ iframe {
     border: 0;
     opacity: 0;
     width: 200px;
+    max-height: 200px;
+    text-align: center;
     transition: 0.5s;
 }
