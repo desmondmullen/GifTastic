@@ -2,14 +2,24 @@ body {
     box-sizing: border-box; 
 }
 .gif-holder {
+    display: inline-block;
     width: 200px;
+    margin: 10px;
 }
-div:hover img {
-    opacity: 0;
+div {
+    /* border: 2px solid red; */
+}
+iframe:hover {
+    opacity: 1;
 }
 img {
     position: absolute;
 }
-iframe:hover {
-    position: absolute;
+iframe {
+    left: 0px;
+    position: relative;
+    border: 0;
+    opacity: 0;
+    width: 200px;
+    transition: 0.5s;
 }
