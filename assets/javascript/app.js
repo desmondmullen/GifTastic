@@ -6,7 +6,4 @@ $.ajax({
     let theEmbedURL = response.data[0].embed_url;
     let theFixedWidthStill = response.data[0].images.fixed_width_still.url;
     $("#result").html("<div><img src=\"" + theFixedWidthStill + "\" width='150px'><iframe src=\"" + theEmbedURL + "\" width='150px' frameBorder='0'></iframe></div>");
-
-    console.log(theEmbedURL);
-    console.log(theFixedWidthStill);
 });
