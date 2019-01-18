@@ -147,7 +147,7 @@ $(document).ready(function () {
     }
 
     function setCookie() {
-        theCookieString = 'favorites=' + theFavorites.join(",") + '; expires=Wed, 1 Jan 2025 12:00:00 UTC; path=/; domain = www.desmondmullen.com';
+        theCookieString = 'favorites=' + theFavorites.join(",") + '; expires=Wed, 1 Jan 2025 12:00:00 UTC; path=/;';
         console.log(theCookieString);
         document.cookie = theCookieString;
         setTimeout(function () {
