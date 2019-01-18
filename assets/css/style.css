@@ -7,22 +7,26 @@ em {
 }
 
 header {
+    display: flex;
+    justify-content: space-around;
     margin: 10px 0;
     padding: 10px 20px;
     font-weight: bold;
     background-color: #FF7940;
 }
 
-#ratings {
-    float: left;
+#ratings-area {
+    flex-grow: 1;
+    /* align-self: flex-start; */
 }
 
 #search-area {
-    float: left;
+    flex-grow: 2;
 }
 
 #add-button-area {
-    float: right;
+    flex-grow: 1;
+    /* align-self: flex-end; */
 }
 
 .btn {
