@@ -1,42 +1,54 @@
 body {
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
+
 em {
     font-style: italic;
 }
+
 header {
-margin: 10px 0;
-padding: 10px 20px;
-font-weight: bold;
-background-color: lightblue;
+    margin: 10px 0;
+    padding: 10px 20px;
+    font-weight: bold;
+    background-color: #FF7940;
 }
+
 #ratings {
     float: left;
 }
+
 #add-button-area {
     float: right;
 }
+
 .btn {
     margin: 10px;
 }
+
 .radio-button {
     margin: 0 0 0 20px;
     background-color: gray;
 }
+
 header::after {
     content: "";
     clear: both;
     display: table;
 }
+
 div {
     text-align: center;
     align-content: center;
 }
+
 #last-search {
     margin: 10px 0;
     font-family: 'Courier New', Courier, monospace;
-    background-color:lightgreen;
+    font-weight: bold;
+    color: white;
+    background-color: #3D5C99;
 }
+
 .gif-holder {
     display: inline-block;
     margin: 10px;
@@ -44,6 +56,7 @@ div {
     background-color: lightgray;
     max-width: 200px;
 }
+
 .gif-info {
     font-style: italic;
     max-width: 200px;
@@ -51,17 +64,21 @@ div {
     overflow: hidden;
     margin: 0 auto;
 }
+
 .gif-rating {
-    font-weight: bold; 
+    font-weight: bold;
     margin: 0 auto;
 }
+
 iframe:hover {
     opacity: 1;
 }
+
 img {
     position: absolute;
     max-height: 150px;
 }
+
 iframe {
     left: 0px;
     position: relative;
@@ -71,4 +88,13 @@ iframe {
     max-height: 200px;
     text-align: center;
     transition: 0.5s;
+}
+
+.btn-info {
+    /* background-color: #170CE8 */
+}
+
+.more-button {
+    margin: 20px 0 40px 0;
+    /* align-content: center; */
 }
