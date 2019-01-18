@@ -18,9 +18,6 @@ header {
 
 #ratings-area {
     flex-grow: 1;
-    /* display: flex; */
-    /* justify-content: space-between;
-    align-content: center; */
 }
 
 #search-area {
@@ -35,13 +32,13 @@ header {
     margin: 10px;
 }
 
-.radio-button {
-    /* margin: 20px; */
-}
-
 div {
     text-align: center;
     align-content: center;
+}
+
+p {
+    text-align: center;
 }
 
 #last-search {
