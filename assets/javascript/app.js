@@ -150,6 +150,10 @@ $(document).ready(function () {
         theCookieString = 'favorites=' + theFavorites.join(",") + '; expires=Wed, 1 Jan 2025 12:00:00 UTC; path=/;';
         console.log(theCookieString);
         document.cookie = theCookieString;
+        getCookie();
+    };
+
+    function getCookie() {
         let theCookie = document.cookie.substr(10);
         console.log("'" + theCookie + "'");
         console.log(theFavorites);
@@ -159,6 +163,6 @@ $(document).ready(function () {
         }
     };
 
-    setCookie();
+    getCookie();
     getGifs(theLastSearch, true);
 });
