@@ -29,7 +29,7 @@ $(document).ready(function () {
         };
     });
 
-    $(document).on('click', '.glyphicon', function (event) {
+    $(document).on('click', '.glyphicon', function (event) { //favorites
         let theIDtoFavorite = $(this).attr('data-id');
         if ($(this).attr('class') === 'glyphicon glyphicon-heart-empty') {
             $(this).attr({ 'class': 'glyphicon glyphicon-heart' });
@@ -38,6 +38,7 @@ $(document).ready(function () {
             $(this).attr({ 'class': 'glyphicon glyphicon-heart-empty' });
             theFavorites.splice(theFavorites.indexOf(theIDtoFavorite), 1);
         }
+        setCookie();
     });
 
     $(document).on('click', '.favorites', function (event) {
@@ -141,13 +142,19 @@ $(document).ready(function () {
                 $('#gifs-portfolio').append("<div class='gif-holder'><div class='img-and-iframe'><img src='" + theFixedWidthStill + "'><iframe src='" + theFixedWidthURL + "'></iframe></div><div class='gif-info'>" + theName + " <span class='glyphicon glyphicon-heart' data-id='" + theID + "'> </span></div><div class='gif-rating'>Rated: " + theRating + "</div></div>");
             } else { //then we show the non-favorited heart
                 $('#gifs-portfolio').append("<div class='gif-holder'><div class='img-and-iframe'><img src='" + theFixedWidthStill + "'><iframe src='" + theFixedWidthURL + "'></iframe></div><div class='gif-info'>" + theName + " <span class='glyphicon glyphicon-heart-empty' data-id='" + theID + "'> </span></div><div class='gif-rating'>Rated: " + theRating + "</div></div>");
-                // if (theFavorites.indexOf(theID) > -1) { //then we show the favorited heart
-                //     $('#gifs-portfolio').append("<div class='gif-holder'><div class='gif-info'>" + theName + " <span class='glyphicon glyphicon-heart' data-id='" + theID + "'> </span></div><div class='gif-rating'>Rating: " + theRating + "</div><div class='img-and-iframe'><img src='" + theFixedWidthStill + "'><iframe src='" + theFixedWidthURL + "'></iframe></div></div>");
-                // } else { //then we show the non-favorited heart
-                //     $('#gifs-portfolio').append("<div class='gif-holder'><div class='gif-info'>" + theName + " <span class='glyphicon glyphicon-heart-empty' data-id='" + theID + "'> </span></div><div class='gif-rating'>Rating: " + theRating + "</div><div class='img-and-iframe'><img src='" + theFixedWidthStill + "'><iframe src='" + theFixedWidthURL + "'></iframe></div></div>");
             }
         }
     }
 
+    function setCookie() {
+        theCookieString = 'favorites=' + theFavorites.join(",") + '; expires=Wed, 1 Jan 2025 12:00:00 UTC; path=/; domain = www.desmondmullen.com';
+        console.log(theCookieString);
+        document.cookie = theCookieString;
+        setTimeout(function () {
+            let theCookie = document.cookie;
+            console.log("'" + theCookie + "'");
+        }, 500);
+    }
+    setCookie();
     getGifs(theLastSearch, true);
 });
