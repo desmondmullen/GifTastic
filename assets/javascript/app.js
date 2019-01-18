@@ -153,8 +153,10 @@ $(document).ready(function () {
         let theCookie = document.cookie.substr(9);
         console.log("'" + theCookie + "'");
         console.log(theFavorites);
-        theFavorites = theCookie.split(',');
-        console.log(theFavorites);
+        if (theCookie != '') {
+            theFavorites = theCookie.split(',');
+            console.log(theFavorites);
+        }
     };
 
     setCookie();
