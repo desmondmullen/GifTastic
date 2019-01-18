@@ -27,7 +27,6 @@ header {
 
 .radio-button {
     margin: 0 0 0 20px;
-    background-color: gray;
 }
 
 header::after {
@@ -55,27 +54,21 @@ div {
     text-align: center;
     background-color: lightgray;
     width: 200px;
-    /* max-width: 200px; */
 }
 
 .gif-info {
     font-style: italic;
-    /* max-width: 200px; */
     white-space: nowrap;
     overflow: hidden;
-    /* margin: 0 auto; */
 }
 
 .gif-rating {
     font-weight: bold;
-    /* margin: 0 auto; */
 }
 
 .img-and-iframe {
     display: flex;
     justify-content: center;
-    /* min-width: 200px;
-    margin: 0 auto; */
 }
 
 iframe:hover {
@@ -99,11 +92,6 @@ iframe {
     transition: 0.5s;
 }
 
-.btn-info {
-    /* background-color: #170CE8 */
-}
-
 .more-button {
     margin: 20px 0 40px 0;
-    /* align-content: center; */
 }

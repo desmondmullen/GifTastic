@@ -1,7 +1,10 @@
 $(document).ready(function () {
-    var theButtons = ['typing cats', 'piano cats', 'sleepy cats', 'sneaky cats', 'cat fails', 'cat wins', 'sleepy kittens', 'sneaky kittens', 'kitten fails', 'kitten wins'];
+    var theButtons = ['typing cat', 'piano cat', 'sleepy cat', 'sneaky cat', 'cat fail', 'cat win', 'sleepy kitten', 'sneaky kitten', 'kitten fail', 'kitten win'];
+    var theFavorites = [];
     var theLastSearch = theButtons[0];
     var theOffset = 0;
+
+    $('#buttons').append($('<button>').attr({ id: 'Favorites', class: 'btn btn-info favorites' }).text('Favorites')); //runs once to make a Favorites button
 
     function makeButton(theButton) {
         $('#buttons').append($('<button>').attr({ id: theButton, class: 'btn btn-info query-button' }).text(theButton));
@@ -13,6 +16,15 @@ $(document).ready(function () {
 
     $('.query-button').click(function (event) {
         getGifs(event.target.id, true);
+    });
+
+    $(document).on('click', '.gif-info', function (event) {
+        let theIDtoFavorite = $(this).attr('data-id');
+        theFavorites.push(theIDtoFavorite);
+    });
+
+    $('.favorites').click(function (event) {
+        getFavoriteGifs()
     });
 
     $('#add-new-button').click(function () {
@@ -44,7 +56,7 @@ $(document).ready(function () {
         if (clearTheSlate === true) {
             theOffset = 0;
         };
-        let theQuery = 'https://api.giphy.com/v1/gifs/search?q=' + theGifsToGet + '&rating=' + theRating + '&limit=20&offset=' + theOffset + '&api_key=l1WgOAzyUj9zBJQAGD6fSPdBmHLszb5w';
+        let theQuery = 'https://api.giphy.com/v1/gifs/search?q=' + theGifsToGet + '&rating=' + theRating + '&limit=10&offset=' + theOffset + '&api_key=l1WgOAzyUj9zBJQAGD6fSPdBmHLszb5w';
         $.ajax({
             url: theQuery,
             method: 'GET'
@@ -54,15 +66,36 @@ $(document).ready(function () {
             if (clearTheSlate === true) {
                 $('#gifs-portfolio').empty();
             };
-            for (let n = 0; n < response.data.length; n++) {
-                theOffset += response.data.length;
-                let theName = response.data[n].title;
-                let theRating = response.data[n].rating;
-                let theFixedWidthURL = response.data[n].embed_url;
-                let theFixedWidthStill = response.data[n].images.fixed_width_still.url;
-                $('#gifs-portfolio').append("<div class='gif-holder'><div class='gif-info'>" + theName + "</div><div class='gif-rating'>Rating: " + theRating + "</div><div class='img-and-iframe'><img src='" + theFixedWidthStill + "'><iframe src='" + theFixedWidthURL + "'></iframe></div></div>");
-            }
+            parseTheResponse(response)
         });
     }
+
+    function getFavoriteGifs() {
+        theGifsToGet = theFavorites.join(",");
+        let theQuery = 'https://api.giphy.com/v1/gifs?ids=' + theGifsToGet + '&api_key=l1WgOAzyUj9zBJQAGD6fSPdBmHLszb5w';
+        $.ajax({
+            url: theQuery,
+            method: 'GET'
+        }).then(function (response) {
+            theLastSearch = theGifsToGet;
+            $('#last-search').text('last search (favorites): ' + theLastSearch);
+            $('#gifs-portfolio').empty();
+            parseTheResponse(response)
+        });
+    }
+
+    function parseTheResponse(response) {
+        for (let n = 0; n < response.data.length; n++) {
+            theOffset += response.data.length;
+            let theID = response.data[n].id;
+            let theName = response.data[n].title;
+            theName = theName.substr(0, theName.indexOf(" GIF"));
+            let theRating = response.data[n].rating;
+            let theFixedWidthURL = response.data[n].embed_url;
+            let theFixedWidthStill = response.data[n].images.fixed_width_still.url;
+            $('#gifs-portfolio').append("<div class='gif-holder'><div class='gif-info' data-id='" + theID + "'>" + theName + "</div><div class='gif-rating'>Rating: " + theRating + "</div><div class='img-and-iframe'><img src='" + theFixedWidthStill + "'><iframe src='" + theFixedWidthURL + "'></iframe></div></div>");
+        }
+    }
+
     getGifs(theLastSearch, true);
 });
