@@ -104,7 +104,7 @@ $(document).ready(function () {
             method: 'GET'
         }).then(function (response) {
             theLastSearch = theGifsToGet;
-            $('#last-search').text('last search (favorites): ' + theLastSearch);
+            $('#last-search').text('last search (favorites, by ID): ' + theLastSearch);
             $('#gifs-portfolio').empty();
             parseTheResponse(response)
             $('#more-button').attr({ 'style': 'opacity: 0' });

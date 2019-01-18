@@ -9,8 +9,9 @@ em {
 header {
     display: flex;
     justify-content: space-around;
+    align-items: baseline;
     margin: 10px 0;
-    padding: 10px 20px;
+    /* padding: 10px 20px; */
     font-weight: bold;
     background-color: #FF7940;
 }
