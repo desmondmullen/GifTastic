@@ -88,7 +88,7 @@ $(document).ready(function () {
 
     function getGifs(theGifsToGet, clearTheSlate) {
         theGifsToGet = theGifsToGet.split(' ').join('+'); //to take care of any spaces
-        let theRating = document.querySelector("input[name='rating']:checked").value;
+        let theRating = document.querySelector("input[name='rating']:checked").value.toUpperCase();
         if (clearTheSlate === true) {
             theOffset = 0;
         };
@@ -133,7 +133,8 @@ $(document).ready(function () {
             let theID = response.data[n].id;
             let theName = response.data[n].title;
             theName = theName.substr(0, theName.indexOf(" GIF"));
-            let theRating = response.data[n].rating;
+            theName = theName.substr(0, 26);
+            let theRating = response.data[n].rating.toUpperCase();
             let theFixedWidthURL = response.data[n].embed_url;
             let theFixedWidthStill = response.data[n].images.fixed_width_still.url;
             if (theFavorites.indexOf(theID) > -1) { //then we show the favorited heart
