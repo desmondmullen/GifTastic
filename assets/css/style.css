@@ -57,7 +57,7 @@ p {
 }
 
 .gif-info {
-    font-style: italic;
+    font-weight: bold;
     white-space: nowrap;
     overflow: hidden;
 }
@@ -67,7 +67,7 @@ p {
 }
 
 .gif-rating {
-    font-weight: bold;
+    font-style: italic;
 }
 
 .img-and-iframe {
@@ -128,6 +128,7 @@ iframe {
     }
     .text-input {
         width: 25%;
+        height: 1.7rem;
     }
     .btn {
         padding: 0 10px;
@@ -138,6 +139,12 @@ iframe {
     }
     #delete-notice {
         display: none;
+    }
+    img {
+        display: none;
+    }
+    iframe {
+        opacity: 1;
     }
 }
 

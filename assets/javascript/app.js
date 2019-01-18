@@ -68,7 +68,7 @@ $(document).ready(function () {
         }
     });
 
-    function doSearchWithoutButton() {
+    function doSearchWithoutButton() { //doesn't create a new button
         let theSearchString = $('#search-text').val().trim();
         if (theSearchString !== "") {
             $('#search-text').val("");
@@ -138,9 +138,13 @@ $(document).ready(function () {
             let theFixedWidthURL = response.data[n].embed_url;
             let theFixedWidthStill = response.data[n].images.fixed_width_still.url;
             if (theFavorites.indexOf(theID) > -1) { //then we show the favorited heart
-                $('#gifs-portfolio').append("<div class='gif-holder'><div class='gif-info'>" + theName + " <span class='glyphicon glyphicon-heart' data-id='" + theID + "'> </span></div><div class='gif-rating'>Rating: " + theRating + "</div><div class='img-and-iframe'><img src='" + theFixedWidthStill + "'><iframe src='" + theFixedWidthURL + "'></iframe></div></div>");
-            } else {
-                $('#gifs-portfolio').append("<div class='gif-holder'><div class='gif-info'>" + theName + " <span class='glyphicon glyphicon-heart-empty' data-id='" + theID + "'> </span></div><div class='gif-rating'>Rating: " + theRating + "</div><div class='img-and-iframe'><img src='" + theFixedWidthStill + "'><iframe src='" + theFixedWidthURL + "'></iframe></div></div>");
+                $('#gifs-portfolio').append("<div class='gif-holder'><div class='img-and-iframe'><img src='" + theFixedWidthStill + "'><iframe src='" + theFixedWidthURL + "'></iframe></div><div class='gif-info'>" + theName + " <span class='glyphicon glyphicon-heart' data-id='" + theID + "'> </span></div><div class='gif-rating'>Rated: " + theRating + "</div></div>");
+            } else { //then we show the non-favorited heart
+                $('#gifs-portfolio').append("<div class='gif-holder'><div class='img-and-iframe'><img src='" + theFixedWidthStill + "'><iframe src='" + theFixedWidthURL + "'></iframe></div><div class='gif-info'>" + theName + " <span class='glyphicon glyphicon-heart-empty' data-id='" + theID + "'> </span></div><div class='gif-rating'>Rated: " + theRating + "</div></div>");
+                // if (theFavorites.indexOf(theID) > -1) { //then we show the favorited heart
+                //     $('#gifs-portfolio').append("<div class='gif-holder'><div class='gif-info'>" + theName + " <span class='glyphicon glyphicon-heart' data-id='" + theID + "'> </span></div><div class='gif-rating'>Rating: " + theRating + "</div><div class='img-and-iframe'><img src='" + theFixedWidthStill + "'><iframe src='" + theFixedWidthURL + "'></iframe></div></div>");
+                // } else { //then we show the non-favorited heart
+                //     $('#gifs-portfolio').append("<div class='gif-holder'><div class='gif-info'>" + theName + " <span class='glyphicon glyphicon-heart-empty' data-id='" + theID + "'> </span></div><div class='gif-rating'>Rating: " + theRating + "</div><div class='img-and-iframe'><img src='" + theFixedWidthStill + "'><iframe src='" + theFixedWidthURL + "'></iframe></div></div>");
             }
         }
     }
