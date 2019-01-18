@@ -17,6 +17,10 @@ header {
     float: left;
 }
 
+#search-area {
+    float: left;
+}
+
 #add-button-area {
     float: right;
 }

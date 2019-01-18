@@ -31,22 +31,40 @@ $(document).ready(function () {
     });
 
     $('.favorites').click(function (event) {
-        getFavoriteGifs()
+        getFavoriteGifs();
+    });
+
+    $('#search-button').click(function () {
+        doSearchWithoutButton();
     });
 
     $('#add-new-button').click(function () {
-        makeNewButton()
+        makeNewButton();
     });
 
     $('#more-button').click(function () {
         getGifs(theLastSearch, false);
     });
 
-    $("#new-button-text").on('keypress', function (event) {
+    $("#search-text").on('keypress', function (event) {
         if (event.which == 13) {
-            makeNewButton()
+            doSearchWithoutButton();
         }
     });
+
+    $("#new-button-text").on('keypress', function (event) {
+        if (event.which == 13) {
+            makeNewButton();
+        }
+    });
+
+    function doSearchWithoutButton() {
+        let theSearchString = $('#search-text').val().trim();
+        if (theSearchString !== "") {
+            $('#search-text').val("");
+            getGifs(theSearchString, true);
+        }
+    }
 
     function makeNewButton() {
         let theButtonName = $('#new-button-text').val().trim();
