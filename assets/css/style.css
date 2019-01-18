@@ -17,16 +17,17 @@ header {
 
 #ratings-area {
     flex-grow: 1;
-    /* align-self: flex-start; */
+    /* display: flex; */
+    /* justify-content: space-between;
+    align-content: center; */
 }
 
 #search-area {
-    flex-grow: 2;
+    flex-grow: 1;
 }
 
 #add-button-area {
     flex-grow: 1;
-    /* align-self: flex-end; */
 }
 
 .btn {
@@ -34,13 +35,7 @@ header {
 }
 
 .radio-button {
-    margin: 0 0 0 20px;
-}
-
-header::after {
-    content: "";
-    clear: both;
-    display: table;
+    /* margin: 20px; */
 }
 
 div {
