@@ -4,19 +4,29 @@ $(document).ready(function () {
     var theLastSearch = theButtons[0];
     var theOffset = 0;
 
-    $('#buttons').append($('<button>').attr({ id: 'favorites', class: 'btn btn-info favorites' }).html("<span class='glyphicon glyphicon-heart'></span> Favorites")); //runs once to make a Favorites button
 
     function makeButton(theButton) {
         $('#buttons').append($('<button>').attr({ id: theButton, class: 'btn btn-info query-button' }).text(theButton));
     }
 
-    for (let n = 0; n < theButtons.length; n++) {
-        makeButton(theButtons[n]);
+    function resetButtons() {
+        $('#buttons').html($('<button>').attr({ id: 'favorites', class: 'btn btn-info favorites' }).html("<span class='glyphicon glyphicon-heart'></span> Favorites")); //runs once to make a Favorites button
+        for (let n = 0; n < theButtons.length; n++) {
+            makeButton(theButtons[n]);
+        };
     };
+    resetButtons();
 
-    $('.query-button').click(function (event) {
-        console.log(event.originalEvent.getModifierState('Alt'));
-        getGifs(event.target.id, true);
+    $(document).on('click', '.query-button', function (event) {
+        let theButton = event.target.id
+        if (event.originalEvent.getModifierState('Alt')) {
+            if (confirm('Click OK to delete the \"' + theButton + '\" button')) {
+                theButtons.splice(theButtons.indexOf(theButton), 1);
+                resetButtons();
+            };
+        } else {
+            getGifs(theButton, true);
+        };
     });
 
     $(document).on('click', '.glyphicon', function (event) {
@@ -28,10 +38,9 @@ $(document).ready(function () {
             $(this).attr({ 'class': 'glyphicon glyphicon-heart-empty' });
             theFavorites.splice(theFavorites.indexOf(theIDtoFavorite), 1);
         }
-        console.log(theFavorites);
     });
 
-    $('.favorites').click(function (event) {
+    $(document).on('click', '.favorites', function (event) {
         getFavoriteGifs();
     });
 
@@ -70,6 +79,7 @@ $(document).ready(function () {
     function makeNewButton() {
         let theButtonName = $('#new-button-text').val().trim();
         if (theButtonName !== "") {
+            theButtons.push(theButtonName);
             $('#new-button-text').val("");
             makeButton(theButtonName);
             getGifs(theButtonName, true);
