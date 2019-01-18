@@ -62,6 +62,10 @@ div {
     overflow: hidden;
 }
 
+.glyphicon-heart, .glyphicon-heart-empty {
+    color: red;
+}
+
 .gif-rating {
     font-weight: bold;
 }

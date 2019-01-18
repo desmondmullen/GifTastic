@@ -4,7 +4,7 @@ $(document).ready(function () {
     var theLastSearch = theButtons[0];
     var theOffset = 0;
 
-    $('#buttons').append($('<button>').attr({ id: 'Favorites', class: 'btn btn-info favorites' }).text('Favorites')); //runs once to make a Favorites button
+    $('#buttons').append($('<button>').attr({ id: 'Favorites', class: 'btn btn-info favorites' }).html("<span class='glyphicon glyphicon-heart'></span> Favorites")); //runs once to make a Favorites button
 
     function makeButton(theButton) {
         $('#buttons').append($('<button>').attr({ id: theButton, class: 'btn btn-info query-button' }).text(theButton));
@@ -18,9 +18,15 @@ $(document).ready(function () {
         getGifs(event.target.id, true);
     });
 
-    $(document).on('click', '.gif-info', function (event) {
+    $(document).on('click', '.glyphicon', function (event) {
         let theIDtoFavorite = $(this).attr('data-id');
-        theFavorites.push(theIDtoFavorite);
+        if ($(this).attr('class') === 'glyphicon glyphicon-heart-empty') {
+            $(this).attr({ 'class': 'glyphicon glyphicon-heart' });
+            theFavorites.push(theIDtoFavorite);
+        } else {
+            $(this).attr({ 'class': 'glyphicon glyphicon-heart-empty' });
+            theFavorites.splice(theFavorites.indexOf(theIDtoFavorite), 1);
+        }
     });
 
     $('.favorites').click(function (event) {
@@ -93,7 +99,7 @@ $(document).ready(function () {
             let theRating = response.data[n].rating;
             let theFixedWidthURL = response.data[n].embed_url;
             let theFixedWidthStill = response.data[n].images.fixed_width_still.url;
-            $('#gifs-portfolio').append("<div class='gif-holder'><div class='gif-info' data-id='" + theID + "'>" + theName + "</div><div class='gif-rating'>Rating: " + theRating + "</div><div class='img-and-iframe'><img src='" + theFixedWidthStill + "'><iframe src='" + theFixedWidthURL + "'></iframe></div></div>");
+            $('#gifs-portfolio').append("<div class='gif-holder'><div class='gif-info'>" + theName + " <span class='glyphicon glyphicon-heart-empty' data-id='" + theID + "'></span></div><div class='gif-rating'>Rating: " + theRating + "</div><div class='img-and-iframe'><img src='" + theFixedWidthStill + "'><iframe src='" + theFixedWidthURL + "'></iframe></div></div>");
         }
     }
 
