@@ -54,20 +54,28 @@ div {
     margin: 10px;
     text-align: center;
     background-color: lightgray;
-    max-width: 200px;
+    width: 200px;
+    /* max-width: 200px; */
 }
 
 .gif-info {
     font-style: italic;
-    max-width: 200px;
+    /* max-width: 200px; */
     white-space: nowrap;
     overflow: hidden;
-    margin: 0 auto;
+    /* margin: 0 auto; */
 }
 
 .gif-rating {
     font-weight: bold;
-    margin: 0 auto;
+    /* margin: 0 auto; */
+}
+
+.img-and-iframe {
+    display: flex;
+    justify-content: center;
+    /* min-width: 200px;
+    margin: 0 auto; */
 }
 
 iframe:hover {
@@ -76,6 +84,7 @@ iframe:hover {
 
 img {
     position: absolute;
+    align-self: center;
     max-height: 150px;
 }
 
@@ -86,7 +95,7 @@ iframe {
     opacity: 0;
     width: 200px;
     max-height: 200px;
-    text-align: center;
+    align-self: center;
     transition: 0.5s;
 }
 

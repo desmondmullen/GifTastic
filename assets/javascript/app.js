@@ -30,15 +30,13 @@ $(document).ready(function () {
     });
 
     function makeNewButton() {
-        let theButtonName = $('#new-button-text').val();
+        let theButtonName = $('#new-button-text').val().trim();
         if (theButtonName !== "") {
             $('#new-button-text').val("");
             makeButton(theButtonName);
             getGifs(theButtonName, true);
         }
     }
-
-    //retrieve 20 at a time, keep track so we can retrieve more with a more button
 
     function getGifs(theGifsToGet, clearTheSlate) {
         theGifsToGet = theGifsToGet.split(' ').join('+'); //to take care of any spaces
@@ -62,7 +60,7 @@ $(document).ready(function () {
                 let theRating = response.data[n].rating;
                 let theFixedWidthURL = response.data[n].embed_url;
                 let theFixedWidthStill = response.data[n].images.fixed_width_still.url;
-                $('#gifs-portfolio').append("<div class='gif-holder'><div class='gif-info'>" + theName + "</div><div class='gif-rating'>Rating: " + theRating + "</div><img src='" + theFixedWidthStill + "'><iframe src='" + theFixedWidthURL + "'></iframe></div>");
+                $('#gifs-portfolio').append("<div class='gif-holder'><div class='gif-info'>" + theName + "</div><div class='gif-rating'>Rating: " + theRating + "</div><div class='img-and-iframe'><img src='" + theFixedWidthStill + "'><iframe src='" + theFixedWidthURL + "'></iframe></div></div>");
             }
         });
     }
