@@ -11,7 +11,6 @@ header {
     justify-content: space-around;
     align-items: baseline;
     margin: 10px 0;
-    /* padding: 10px 20px; */
     font-weight: bold;
     background-color: #FF7940;
 }
@@ -99,4 +98,48 @@ iframe {
 
 .more-button {
     margin: 20px 0 40px 0;
+}
+
+@-ms-viewport {
+    width: device-width;
+}
+
+@media only screen and (max-width: 900px) {
+    header {
+        display: block;
+        margin: 10px 0;
+        font-weight: bold;
+        background-color: #FF7940;
+    }
+    #ratings-area {
+        display: inline-block;
+    }
+    #search-area {
+        display: inline-block;
+    }
+    #add-button-area {
+        display: inline-block;
+    }
+    .text-input {
+        width: 25%;
+        border: 2px solid red;
+    }
+    .btn {
+        padding: 0 10px;
+        margin: 5px;
+    }
+    h1 {
+        font-size: large;
+    }
+    #delete-notice {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    /*really small margins for better layout on mobile in portrait*/
+}
+
+@media only screen and (max-width: 600px) {
+    /*really small margins for better layout on mobile in portrait*/
 }
