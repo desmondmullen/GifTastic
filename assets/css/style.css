@@ -113,16 +113,21 @@ iframe {
     }
     #ratings-area {
         display: inline-block;
+        width: 100%;
+        margin: 0 auto;
     }
     #search-area {
         display: inline-block;
+        width: 100%;
+        margin: 0 auto;
     }
     #add-button-area {
         display: inline-block;
+        width: 100%;
+        margin: 0 auto;
     }
     .text-input {
         width: 25%;
-        border: 2px solid red;
     }
     .btn {
         padding: 0 10px;
