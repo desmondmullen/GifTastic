@@ -4,7 +4,7 @@ $(document).ready(function () {
     var theLastSearch = theButtons[0];
     var theOffset = 0;
 
-    $('#buttons').append($('<button>').attr({ id: 'Favorites', class: 'btn btn-info favorites' }).html("<span class='glyphicon glyphicon-heart'></span> Favorites")); //runs once to make a Favorites button
+    $('#buttons').append($('<button>').attr({ id: 'favorites', class: 'btn btn-info favorites' }).html("<span class='glyphicon glyphicon-heart'></span> Favorites")); //runs once to make a Favorites button
 
     function makeButton(theButton) {
         $('#buttons').append($('<button>').attr({ id: theButton, class: 'btn btn-info query-button' }).text(theButton));
@@ -15,6 +15,7 @@ $(document).ready(function () {
     };
 
     $('.query-button').click(function (event) {
+        console.log(event.originalEvent.getModifierState('Alt'));
         getGifs(event.target.id, true);
     });
 
@@ -94,22 +95,27 @@ $(document).ready(function () {
             parseTheResponse(response)
             $('#more-button').attr({ 'style': 'opacity: 1' });
         });
-    }
+    };
 
     function getFavoriteGifs() {
-        theGifsToGet = theFavorites.join(",");
-        let theQuery = 'https://api.giphy.com/v1/gifs?ids=' + theGifsToGet + '&api_key=l1WgOAzyUj9zBJQAGD6fSPdBmHLszb5w';
-        $.ajax({
-            url: theQuery,
-            method: 'GET'
-        }).then(function (response) {
-            theLastSearch = theGifsToGet;
-            $('#last-search').text('last search (favorites, by ID): ' + theLastSearch);
-            $('#gifs-portfolio').empty();
-            parseTheResponse(response)
+        if (theFavorites.length < 1) {
+            $('#gifs-portfolio').html('<br><br><h1>You have no saved favorites at this time.<br>Click the heart outline on any gif to make it a favorite.</h1>');
             $('#more-button').attr({ 'style': 'opacity: 0' });
-        });
-    }
+        } else {
+            theGifsToGet = theFavorites.join(",");
+            let theQuery = 'https://api.giphy.com/v1/gifs?ids=' + theGifsToGet + '&api_key=l1WgOAzyUj9zBJQAGD6fSPdBmHLszb5w';
+            $.ajax({
+                url: theQuery,
+                method: 'GET'
+            }).then(function (response) {
+                theLastSearch = theGifsToGet;
+                $('#last-search').text('last search (favorites, by ID): ' + theLastSearch);
+                $('#gifs-portfolio').empty();
+                parseTheResponse(response)
+                $('#more-button').attr({ 'style': 'opacity: 0' });
+            });
+        };
+    };
 
     function parseTheResponse(response) {
         for (let n = 0; n < response.data.length; n++) {
