@@ -150,12 +150,16 @@ $(document).ready(function () {
     }
 
     function setCookie() {
-        theCookieString = 'favorites=' + theFavorites.join(",") + '; expires=Wed, 1 Jan 2025 12:00:00 UTC; path=/;';
-        document.cookie = theCookieString;
+        theFavoritesCookieString = 'favorites=' + theFavorites.join(",") + '; expires=Wed, 1 Jan 2025 12:00:00 UTC; path=/;';
+        document.cookie = theFavoritesCookieString;
+        theButtonsCookieString = 'buttons=' + theFavorites.join(",") + '; expires=Wed, 1 Jan 2025 12:00:00 UTC; path=/;';
+        document.cookie = theButtonsCookieString;
         getCookie();
     };
 
     function getCookie() {
+        console.log(document.cookie);
+        console.log(document.cookie.split('='));
         let theCookie = document.cookie.substr(10);
         if (theCookie != '') {
             theFavorites = theCookie.split(',');
