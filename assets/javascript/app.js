@@ -35,18 +35,9 @@ $(document).ready(function () {
         };
     });
 
-    //touch version of the above
+    //touch version of the above. The delete button part is removed for touchscreen.
     $(document).on('touchstart', '.query-button', function (event) {
-        // $(document).on('click', '.query-button', function (event) {
-        let theButton = event.target.id
-        if (event.originalEvent.getModifierState('Alt')) {//if the alt or option key is pressed then
-            if (confirm('Click OK to delete the \"' + theButton + '\" button')) {
-                theButtons.splice(theButtons.indexOf(theButton), 1);
-                resetButtons();
-            };
-        } else {
-            getGifs(theButton, true);
-        };
+        getGifs(event.target.id, true);
     });
 
     $(document).on('click', '.glyphicon', function (event) { //favorites
@@ -63,7 +54,6 @@ $(document).ready(function () {
 
     //touch version of the above
     $(document).on('touchstart', '.glyphicon', function (event) { //favorites
-        // $(document).on('click', '.glyphicon', function (event) { //favorites
         let theIDtoFavorite = $(this).attr('data-id');
         if ($(this).attr('class') === 'glyphicon glyphicon-heart-empty') {
             $(this).attr({ 'class': 'glyphicon glyphicon-heart' });
