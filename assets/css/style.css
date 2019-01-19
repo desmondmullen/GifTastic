@@ -124,11 +124,13 @@ iframe {
     header {
         display: block;
         margin: 0 0 10px 0;
+        /* font-weight: normal; */
         font-weight: bold;
         background-color: #FF7940;
     }
     #ratings-area {
         display: inline-block;
+        font-weight: normal;
         width: 100%;
         margin: 0 auto;
     }
