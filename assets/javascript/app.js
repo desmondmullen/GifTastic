@@ -158,12 +158,21 @@ $(document).ready(function () {
     };
 
     function getCookie() {
-        console.log(document.cookie);
-        console.log(document.cookie.split('='));
-        let theCookie = document.cookie.substr(10);
-        if (theCookie != '') {
-            theFavorites = theCookie.split(',');
-        }
+        let theCookies = document.cookie.split('; ');
+        let theFavoritesCookie = theCookies[theCookies.indexOf('favorites')];
+        let theButtonsCookie = theCookies[theCookies.indexOf('buttons')];
+        console.log('favorites: ' + theFavoritesCookie);
+        console.log('buttons: ' + theButtonsCookie);
+        theFavoritesCookie = theFavoritesCookie.split('=');
+        theFavoritesCookie = theFavoritesCookie[1];
+        theButtonsCookie = theButtonsCookie.split('=');
+        theButtonsCookie = theButtonsCookie[1];
+        console.log('favorites: ' + theFavoritesCookie);
+        console.log('buttons: ' + theButtonsCookie);
+        // let theCookie = document.cookie.substr(10);
+        // if (theCookie != '') {
+        //     theFavorites = theCookie.split(',');
+        // }
     };
 
     getCookie();
