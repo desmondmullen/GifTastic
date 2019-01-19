@@ -22,7 +22,7 @@ $(document).ready(function () {
 
     $(document).on('click', '.query-button', function (event) {
         let theButton = event.target.id
-        if (event.originalEvent.getModifierState('Alt')) {
+        if (event.originalEvent.getModifierState('Alt')) {//if the alt or option key is pressed then
             if (confirm('Click OK to delete the \"' + theButton + '\" button')) {
                 theButtons.splice(theButtons.indexOf(theButton), 1);
                 resetButtons();
@@ -43,19 +43,6 @@ $(document).ready(function () {
         }
         setCookie();
     });
-
-    // $(document).on('click', '.gif-info', function (event) { //favorites
-    //     console.log('gif-info clicked');
-    //     let theIDtoFavorite = $(this).attr('data-id');
-    //     if ($(this).attr('class') === 'glyphicon glyphicon-heart-empty') {
-    //         $(this).attr({ 'class': 'glyphicon glyphicon-heart' });
-    //         theFavorites.push(theIDtoFavorite);
-    //     } else {
-    //         $(this).attr({ 'class': 'glyphicon glyphicon-heart-empty' });
-    //         theFavorites.splice(theFavorites.indexOf(theIDtoFavorite), 1);
-    //     }
-    //     setCookie();
-    // });
 
     $(document).on('click', '.favorites', function (event) {
         getFavoriteGifs();
