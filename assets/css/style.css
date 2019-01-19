@@ -147,8 +147,9 @@ iframe {
         margin: 0 auto;
     }
     .text-input {
+        font-size: small;
         width: 25%;
-        height: 1.7rem;
+        height: 2rem;
     }
     .btn {
         padding: 0 10px;
