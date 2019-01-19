@@ -124,7 +124,6 @@ iframe {
     header {
         display: block;
         margin: 0 0 10px 0;
-        /* font-weight: normal; */
         font-weight: bold;
         background-color: #FF7940;
     }
