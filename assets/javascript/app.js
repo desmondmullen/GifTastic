@@ -18,7 +18,6 @@ $(document).ready(function () {
             makeButton(theButtons[n]);
         };
     };
-    resetButtons();
 
     $(document).on('click', '.query-button', function (event) {
         let theButton = event.target.id
@@ -152,7 +151,7 @@ $(document).ready(function () {
     function setCookies() {
         theFavoritesCookieString = 'favorites=' + theFavorites.join(",") + '; expires=Wed, 1 Jan 2025 12:00:00 UTC; path=/;';
         document.cookie = theFavoritesCookieString;
-        theButtonsCookieString = 'buttons=' + theFavorites.join(",") + '; expires=Wed, 1 Jan 2025 12:00:00 UTC; path=/;';
+        theButtonsCookieString = 'buttons=' + theButtons.join(",") + '; expires=Wed, 1 Jan 2025 12:00:00 UTC; path=/;';
         document.cookie = theButtonsCookieString;
         getCookies();
     };
@@ -173,27 +172,7 @@ $(document).ready(function () {
         };
     };
 
-    // function getCookies() {
-    //     console.log(document.cookie);
-    //     if (document.cookie != '') {
-    //         let theCookies = (document.cookie).split('; ');
-    //         let theFavoritesCookie = theCookies[theCookies.indexOf('favorites')];
-    //         let theButtonsCookie = theCookies[theCookies.indexOf('buttons')];
-    //         console.log('favorites: ' + theFavoritesCookie);
-    //         console.log('buttons: ' + theButtonsCookie);
-    //         theFavoritesCookie = theFavoritesCookie.split('=');
-    //         theFavoritesCookie = theFavoritesCookie[1];
-    //         theButtonsCookie = theButtonsCookie.split('=');
-    //         theButtonsCookie = theButtonsCookie[1];
-    //         console.log('favorites: ' + theFavoritesCookie);
-    //         console.log('buttons: ' + theButtonsCookie);
-    //         // let theCookie = document.cookie.substr(10);
-    //         // if (theCookie != '') {
-    //         //     theFavorites = theCookie.split(',');
-    //         // };
-    //     };
-    // };
-
     getCookies();
+    resetButtons();
     getGifs(theLastSearch, true);
 });
