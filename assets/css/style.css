@@ -129,7 +129,7 @@ iframe {
     }
     #ratings-area {
         display: inline-block;
-        font-weight: normal;
+        font-size: x-small;
         width: 100%;
         margin: 0 auto;
     }
