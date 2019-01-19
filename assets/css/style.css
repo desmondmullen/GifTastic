@@ -6,17 +6,30 @@ em {
     font-style: italic;
 }
 
+#page-title {
+    font-family: 'Monoton', cursive;
+    font-size: xx-large;
+    color: white;
+    background-color: black;
+    width: 100%;
+    margin: 0 auto;
+}
+
 header {
     display: flex;
     justify-content: space-around;
     align-items: baseline;
-    margin: 10px 0;
+    margin: 0 0 10px 0;
     font-weight: bold;
     background-color: #FF7940;
 }
 
 #ratings-area {
     flex-grow: 1;
+}
+
+#ratings-heading {
+    display: inline;
 }
 
 #search-area {
@@ -105,9 +118,12 @@ iframe {
 }
 
 @media only screen and (max-width: 900px) {
+    #page-title {
+        font-size: large;
+    }
     header {
         display: block;
-        margin: 10px 0;
+        margin: 0 0 10px 0;
         font-weight: bold;
         background-color: #FF7940;
     }
@@ -115,6 +131,9 @@ iframe {
         display: inline-block;
         width: 100%;
         margin: 0 auto;
+    }
+    #ratings-heading {
+        display: inline-block;
     }
     #search-area {
         display: inline-block;

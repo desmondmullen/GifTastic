@@ -4,6 +4,9 @@ $(document).ready(function () {
     var theLastSearch = theButtons[0];
     var theOffset = 0;
 
+    if (window.matchMedia("(max-width: 670px)").matches) { //make this heading shorter on mobiles, otherwise leave it as it is hard-wired
+        $('#ratings-heading').html('Max. Rating: &nbsp;&nbsp;');
+    };
 
     function makeButton(theButton) {
         $('#buttons').append($('<button>').attr({ id: theButton, class: 'btn btn-info query-button' }).text(theButton));
@@ -40,6 +43,19 @@ $(document).ready(function () {
         }
         setCookie();
     });
+
+    // $(document).on('click', '.gif-info', function (event) { //favorites
+    //     console.log('gif-info clicked');
+    //     let theIDtoFavorite = $(this).attr('data-id');
+    //     if ($(this).attr('class') === 'glyphicon glyphicon-heart-empty') {
+    //         $(this).attr({ 'class': 'glyphicon glyphicon-heart' });
+    //         theFavorites.push(theIDtoFavorite);
+    //     } else {
+    //         $(this).attr({ 'class': 'glyphicon glyphicon-heart-empty' });
+    //         theFavorites.splice(theFavorites.indexOf(theIDtoFavorite), 1);
+    //     }
+    //     setCookie();
+    // });
 
     $(document).on('click', '.favorites', function (event) {
         getFavoriteGifs();
