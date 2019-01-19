@@ -164,6 +164,7 @@ $(document).ready(function () {
             for (let n = 0; n < theString.length; n++) {
                 if (theString[n].startsWith('favorites')) {
                     theFavorites = ((theString[n].split('='))[1]).split(',');
+                    console.log("'" + theFavorites + "'");
                 };
                 if (theString[n].startsWith('buttons')) {
                     theButtons = ((theString[n].split('='))[1]).split(',');
