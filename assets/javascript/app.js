@@ -17,6 +17,7 @@ $(document).ready(function () {
         for (let n = 0; n < theButtons.length; n++) {
             makeButton(theButtons[n]);
         };
+        setCookies();
     };
 
     $(document).on('click', '.query-button', function (event) {
