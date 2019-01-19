@@ -112,6 +112,7 @@ $(document).ready(function () {
     };
 
     function getFavoriteGifs() {
+        console.log(theFavorites + " / " + theFavorites.length);
         if (theFavorites.length < 1) {
             $('#gifs-portfolio').html('<br><br><h1>You have no saved favorites at this time.<br>Click the heart outline on any gif to make it a favorite.</h1>');
             $('#more-button').attr({ 'style': 'opacity: 0' });
