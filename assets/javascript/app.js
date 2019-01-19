@@ -41,7 +41,7 @@ $(document).ready(function () {
             $(this).attr({ 'class': 'glyphicon glyphicon-heart-empty' });
             theFavorites.splice(theFavorites.indexOf(theIDtoFavorite), 1);
         }
-        setCookie();
+        setCookies();
     });
 
     $(document).on('click', '.favorites', function (event) {
@@ -149,35 +149,51 @@ $(document).ready(function () {
         }
     }
 
-    function setCookie() {
+    function setCookies() {
         theFavoritesCookieString = 'favorites=' + theFavorites.join(",") + '; expires=Wed, 1 Jan 2025 12:00:00 UTC; path=/;';
         document.cookie = theFavoritesCookieString;
         theButtonsCookieString = 'buttons=' + theFavorites.join(",") + '; expires=Wed, 1 Jan 2025 12:00:00 UTC; path=/;';
         document.cookie = theButtonsCookieString;
-        getCookie();
+        getCookies();
     };
 
-    function getCookie() {
-        console.log(document.cookie);
+    function getCookies() {
         if (document.cookie != '') {
-            let theCookies = (document.cookie).split('; ');
-            let theFavoritesCookie = theCookies[theCookies.indexOf('favorites')];
-            let theButtonsCookie = theCookies[theCookies.indexOf('buttons')];
-            console.log('favorites: ' + theFavoritesCookie);
-            console.log('buttons: ' + theButtonsCookie);
-            theFavoritesCookie = theFavoritesCookie.split('=');
-            theFavoritesCookie = theFavoritesCookie[1];
-            theButtonsCookie = theButtonsCookie.split('=');
-            theButtonsCookie = theButtonsCookie[1];
-            console.log('favorites: ' + theFavoritesCookie);
-            console.log('buttons: ' + theButtonsCookie);
-            // let theCookie = document.cookie.substr(10);
-            // if (theCookie != '') {
-            //     theFavorites = theCookie.split(',');
-            // };
+            theString = (document.cookie).split('; ');
+            for (let n = 0; n < theString.length; n++) {
+                if (theString[n].startsWith('favorites')) {
+                    theFavorites = ((theString[n].split('='))[1]).split(',');
+                    console.log('favorites: ' + theFavorites);
+                };
+                if (theString[n].startsWith('buttons')) {
+                    theButtons = ((theString[n].split('='))[1]).split(',');
+                    console.log('buttons: ' + theButtons);
+                };
+            };
         };
     };
 
-    getCookie();
+    // function getCookies() {
+    //     console.log(document.cookie);
+    //     if (document.cookie != '') {
+    //         let theCookies = (document.cookie).split('; ');
+    //         let theFavoritesCookie = theCookies[theCookies.indexOf('favorites')];
+    //         let theButtonsCookie = theCookies[theCookies.indexOf('buttons')];
+    //         console.log('favorites: ' + theFavoritesCookie);
+    //         console.log('buttons: ' + theButtonsCookie);
+    //         theFavoritesCookie = theFavoritesCookie.split('=');
+    //         theFavoritesCookie = theFavoritesCookie[1];
+    //         theButtonsCookie = theButtonsCookie.split('=');
+    //         theButtonsCookie = theButtonsCookie[1];
+    //         console.log('favorites: ' + theFavoritesCookie);
+    //         console.log('buttons: ' + theButtonsCookie);
+    //         // let theCookie = document.cookie.substr(10);
+    //         // if (theCookie != '') {
+    //         //     theFavorites = theCookie.split(',');
+    //         // };
+    //     };
+    // };
+
+    getCookies();
     getGifs(theLastSearch, true);
 });
