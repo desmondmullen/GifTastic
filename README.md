@@ -2,6 +2,9 @@
 
 ***GifTastic gif portfolio* is a tool for searching Giphy.com and saving searches and favorites to make your own portfolio.**
 
+**Please note:** Instead of *clicking* to start and stop gif animations as instructed in the assignment, I chose to have the app run the animations on mouse *hover*. I believe this approach feels more familiar, natural, and intuitive to users.
+
+
 # Features
 In addition to the basic function of the assignment, this app does the following:
 
