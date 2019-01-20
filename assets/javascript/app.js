@@ -6,6 +6,14 @@ $(document).ready(function () {
     var theFavorites = [];
     var theLastSearch = theButtons[0];
     var theOffset = 0;
+    var isMobile = {
+        Android: function () { return navigator.userAgent.match(/Android/i); },
+        BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); },
+        iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); },
+        Opera: function () { return navigator.userAgent.match(/Opera Mini/i); },
+        Windows: function () { return navigator.userAgent.match(/IEMobile/i); },
+        any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); }
+    };
 
     if (window.matchMedia("(max-width: 670px)").matches) { //make this heading shorter on mobiles, otherwise leave it as it is hard-wired
         $('#ratings-heading').html('Max. Rating: &nbsp;&nbsp;');
@@ -24,14 +32,16 @@ $(document).ready(function () {
     };
 
     $(document).on('click', '.query-button', function (event) {
-        let theButton = event.target.id
-        if (event.originalEvent.getModifierState('Alt')) {//if the alt or option key is pressed then
-            if (confirm('Click OK to delete the \"' + theButton + '\" button')) {
-                theButtons.splice(theButtons.indexOf(theButton), 1);
-                resetButtons();
+        if (!isMobile.any()) { //if it's not mobile we'll look for onclick, otherwise touchstart below.
+            let theButton = event.target.id
+            if (event.originalEvent.getModifierState('Alt')) {//if the alt or option key is pressed then
+                if (confirm('Click OK to delete the \"' + theButton + '\" button')) {
+                    theButtons.splice(theButtons.indexOf(theButton), 1);
+                    resetButtons();
+                };
+            } else {
+                getGifs(theButton, true);
             };
-        } else {
-            getGifs(theButton, true);
         };
     });
 
@@ -41,15 +51,17 @@ $(document).ready(function () {
     });
 
     $(document).on('click', '.glyphicon', function (event) { //favorites
-        let theIDtoFavorite = $(this).attr('data-id');
-        if ($(this).attr('class') === 'glyphicon glyphicon-heart-empty') {
-            $(this).attr({ 'class': 'glyphicon glyphicon-heart' });
-            theFavorites.push(theIDtoFavorite);
-        } else {
-            $(this).attr({ 'class': 'glyphicon glyphicon-heart-empty' });
-            theFavorites.splice(theFavorites.indexOf(theIDtoFavorite), 1);
-        }
-        setCookies();
+        if (!isMobile.any()) { //if it's not mobile we'll look for onclick, otherwise touchstart below.
+            let theIDtoFavorite = $(this).attr('data-id');
+            if ($(this).attr('class') === 'glyphicon glyphicon-heart-empty') {
+                $(this).attr({ 'class': 'glyphicon glyphicon-heart' });
+                theFavorites.push(theIDtoFavorite);
+            } else {
+                $(this).attr({ 'class': 'glyphicon glyphicon-heart-empty' });
+                theFavorites.splice(theFavorites.indexOf(theIDtoFavorite), 1);
+            }
+            setCookies();
+        };
     });
 
     //touch version of the above
